@@ -3,9 +3,9 @@ import { setStore, getStore } from '@/util/store'
 import { isURL } from '@/util/validate'
 import { encryption, deepClone } from '@/util/util'
 import webiste from '@/const/website'
-import { loginByUsername, getUserInfo, getMenu, logout, getMenuAll, RefeshToken } from '@/api/user'
-
-
+import { loginByUsername, getUserInfo, logout, RefeshToken } from '@/api/user'
+import {getMenu} from '@/api/menu'
+//将各个菜单所对应的路由路径补充完整，方便到时候点击菜单，直接获取菜单路径，然后调用router.push()
 function addPath(ele, first) {
     const propsConfig = webiste.menu.props;
     const propsDefault = {
@@ -32,20 +32,20 @@ const user = {
         permission: {},
         roles: [],
         menu: getStore({ name: 'menu' }) || [],
-        menuAll: [],
         token: getStore({ name: 'token' }) || '',
     },
     actions: {
         //根据用户名登录
         LoginByUsername({ commit }, userInfo) {
-            const user = encryption({
+            //因为后端原因，暂时不对密码加密，但这样会导致在请求体的参数中暴露密码
+            /*const user = encryption({
                 data: userInfo,
                 type: 'Aes',
                 key: 'avue',
                 param: ['useranme', 'password']
-            });
+            });*/
             return new Promise((resolve) => {
-                loginByUsername(user.username, user.password, userInfo.code, userInfo.redomStr).then(res => {
+                loginByUsername(userInfo.username, userInfo.password, userInfo.code, userInfo.redomStr).then(res => {
                     const data = res.data.data;
                     commit('SET_TOKEN', data);
                     commit('DEL_ALL_TAG');
@@ -94,7 +94,6 @@ const user = {
                 })
             })
         },
-        // 登出
         LogOut({ commit }) {
             return new Promise((resolve, reject) => {
                 logout().then(() => {
@@ -110,7 +109,8 @@ const user = {
                 })
             })
         },
-        //注销session
+        //前端登出，因为后端是基于jwt的无状态登录认证，所以暂时在前端清除掉token,但是这样该token在有效期内仍然可认证通过，网上有很多借助数据库或缓存来实现但这是有状态的，
+        // 和session没什么区别，违背了jwt无状态的规则，所以一直没有很好的处理方案，可去helpsource里看详情
         FedLogOut({ commit }) {
             return new Promise(resolve => {
                 commit('SET_TOKEN', '')
@@ -122,7 +122,7 @@ const user = {
                 resolve()
             })
         },
-        //获取系统菜单
+        //获取菜单
         GetMenu({ commit }, parentId) {
             return new Promise(resolve => {
                 getMenu(parentId).then((res) => {
@@ -135,18 +135,7 @@ const user = {
                     resolve(menu)
                 })
             })
-        },
-        //获取全部菜单
-        GetMenuAll({ commit }) {
-            return new Promise(resolve => {
-                getMenuAll().then((res) => {
-                    const data = res.data.data;
-                    commit('SET_MENU_ALL', data);
-                    resolve(data);
-                })
-            })
-        },
-
+        }
     },
     mutations: {
         SET_TOKEN: (state, token) => {
@@ -159,9 +148,6 @@ const user = {
         SET_MENU: (state, menu) => {
             state.menu = menu
             setStore({ name: 'menu', content: state.menu, type: 'session' })
-        },
-        SET_MENU_ALL: (state, menuAll) => {
-            state.menuAll = menuAll;
         },
         SET_ROLES: (state, roles) => {
             state.roles = roles;

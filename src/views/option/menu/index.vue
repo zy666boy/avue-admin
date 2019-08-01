@@ -24,7 +24,7 @@
       </el-container>
       <el-container>
         <el-aside width="300px">
-          <el-tree :data="menuAll"
+          <el-tree :data="menu"
                    node-key="id"
                    highlight-current
                    default-expand-all
@@ -88,16 +88,16 @@ export default {
     };
   },
   created () {
-    this.$store.dispatch("GetMenuAll").then(() => { });
+    this.$store.dispatch("GetMenu").then(() => { });
   },
   mounted () { },
   computed: {
-    ...mapGetters(["permission", "menuAll"])
+    ...mapGetters(["permission", "menu"])
   },
   props: [],
   methods: {
     handleNodeClick (data) {
-      this.parentForm = Object.assign({}, findParent(this.menuAll, data.id));
+      this.parentForm = Object.assign({}, findParent(this.menu, data.id));
       this.formGrade = true;
       this.formStatus = "";
       this.obj = data;

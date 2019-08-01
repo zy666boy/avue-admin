@@ -1,7 +1,7 @@
 import Mock from 'mockjs'
 export default ({ mock }) => {
     if (!mock) return;
-    // 用户登录
+    // 用户登录,，返回的是token
     Mock.mock('/user/login', 'post', {
         data: new Date().getTime() + ''
     });

@@ -11,6 +11,70 @@ import Mock from 'mockjs'
  * children子类菜单数组
  * group配置其他路由激活菜单高亮
  */
+
+/*
+ 在根据菜单生成路由表时，相比菜单内的对象有些变化(千万不要把菜单直接当成路由表！)，比如下面的第一个对象，在变成路由表内的数据时为(原因见avue-router.js的formatRoutes)：
+ {
+     path:'/guide',
+     component(resolve){    //路由懒加载
+           require(['../page/index'], resolve)                    //该组件是主页框架(@/page/index)
+     },
+      name: '引导页',
+       icon: 'icon-canshu',
+       meta: {},
+       redirect:'/guide/index',
+       children:{
+            component(resolve) {
+            require([`../views/guide/index.vue`], resolve)
+            },
+            icon: 'icon-canshu',
+            name: '引导页',
+            meta: {},
+            path: 'index'
+       }
+  }
+  若是含有子菜单的菜单如：CRUD表单，生成的路由表为:
+  {
+        path:'/forms',
+        component(resolve){                                         //路由懒加载
+           require(['../page/index'], resolve)                    //该组件是主页框架(@/page/index)
+        },
+        name:'CRUD表单',
+        icon:'icon-biaodan',
+        meta:{
+            keepAlive:true
+        },
+        redirect:'',
+        children:[
+        {
+            path:'index',
+            component(resolve){                                         //路由懒加载
+                require(['..views/forms/index'], resolve)                    //该组件是主页框架(@/page/index)
+            },
+            name:'表单CRUD',
+            icon:'icon-biaodan',
+            meta:{
+                keepAlive:true
+            },
+           redirect:'',
+           children:[]
+        },
+        {
+            path:'tabs',
+            component(resolve){                                         //路由懒加载
+                require(['..views/forms/tabs'], resolve)                    //该组件是主页框架(@/page/index)
+            },
+            name:'表单TABS',
+            icon:'icon-biaodan',
+            meta:{},
+            redirect:'',
+           children:[]
+        },
+        ....等等
+        ]
+  }
+
+ */
 const first = [{
     id: 33,
     label: "引导页",
@@ -335,7 +399,7 @@ const second = [{
     id: 9,
     label: "系统管理",
     path: '/admin',
-    icon: 'icon-liuliangyunpingtaitubiao08',
+        icon: 'icon-liuliangyunpingtaitubiao08',
     children: [{
             id: 20,
             label: "用户管理",
@@ -361,13 +425,13 @@ const second = [{
         }
     ]
 }]
-export default ({ mock }) => {
+export default ({ mock }) => {                                  //不理解{mock}见次目录下的index.js
     if (!mock) return;
-    let menu = [first, second];
-    Mock.mock('/user/getMenu', 'get', (res) => {
+    let menu = [...first, ...second];
+    Mock.mock('/user/getMenu', 'get', (res) => {                 //res（options）是指向本次请求的 Ajax 选项集，含有 url、type 和 body 三个属性，参见 XMLHttpRequest 规范。
         let body = JSON.parse(res.body);
         return {
-            data: menu[body.type]
+            data: menu//menu[body.type]
         }
     })
 }

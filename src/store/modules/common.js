@@ -13,7 +13,7 @@ const common = {
         isCollapse: false,
         isFullScren: false,
         isShade: false,
-        screen: -1,
+        screen: -1,                                         //screen是屏幕的大小值
         isLock: getStore({ name: 'isLock' }) || false,
         showTag: getStore({ name: 'showTag' }),
         showDebug: getStore({ name: 'showDebug' }),

@@ -36,7 +36,6 @@
          @click="showCollapse"></div>
   </div>
 </template>
-
 <script>
 import { mapGetters } from 'vuex'
 import tags from './tags'
@@ -90,9 +89,9 @@ export default {
           name: 'token',
           debug: true,
         });
-        const date = calcDate(token.datetime, new Date().getTime());
+        const date = calcDate(token.datetime, new Date().getTime());                  //获取token的到期时间与当前时间的时间差
         if (validatenull(date)) return;
-        if (!(date.seconds >= this.website.tokenTime) && !this.refreshLock) {
+        if (!(date.seconds >= this.website.tokenTime) && !this.refreshLock) {           //当token的过期时常大于此网站规定的token的过期时常时刷新token(再次到后台获取token)
           this.refreshLock = true;
           this.$store
             .dispatch('RefeshToken')

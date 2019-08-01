@@ -1,3 +1,5 @@
+
+//计算以多种时间单位表示的时间差
 export const calcDate = (date1, date2) => {
     var date3 = date2 - date1;
 

@@ -20,7 +20,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { userOption } from "@/const/admin/adminTabelOption.js";
+import { userOption } from "@/const/admin/user.js";
 export default {
   name: "user",
   components: {},
@@ -32,7 +32,7 @@ export default {
       tableLoading: false,
       tabelObj: {},
       page: {
-        total: 0, //总页数
+        total: 0, //总条数
         currentPage: 1, //当前页数
         pageSize: 10 //每页显示多少条
       },
@@ -48,7 +48,7 @@ export default {
   watch: {},
   mounted () { },
   computed: {
-    ...mapGetters(["permission", "menuAll"])
+    ...mapGetters(["permission", "menu"])
   },
   props: [],
   methods: {

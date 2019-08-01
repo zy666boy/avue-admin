@@ -28,16 +28,16 @@ module.exports = {
             .end()
     },
     transpileDependencies: ['avue-plugin-transfer', 'avue-plugin-ueditor'],
-    //配置转发代理
+    //配置转发代理(想一下，如果我们请求的时候还是用前端的域名，这个时候就不存在跨域了，符合浏览器的同源政策，然后有个东西帮我们把这个请求转发到真正的后端域名上，不就避免跨域了吗？)
     devServer: {
-        // proxy: {
-        //     '/api': {
-        //         target: 'http://127.0.0.1:3000',
-        //         ws: true,
-        //         pathRewrite: {
-        //             '^/api': '/api'
-        //         }
-        //     },
-        // }
+       /*  proxy: {
+             '/api': {
+                 target: 'http://127.0.0.1:3000',
+                 ws: true,
+                 pathRewrite: {
+                     '^/api': '/api'
+                 }
+             },
+         }*/
     }
 }

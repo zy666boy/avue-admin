@@ -32,7 +32,7 @@ export default {
   created () {
     this.$store.dispatch("GetMenu").then(data => {
       if (data.length === 0) return
-      this.$router.$avueRouter.formatRoutes(data, true);
+      this.$router.$avueRouter.formatRoutes(data, true);                       //根据获取到的菜单动态加载路由
     })
   },
   computed: {

@@ -27,7 +27,7 @@ let Router = new VueRouter({
     },
     routes: []
 });
-AvueRouter.install(Router, Store);
-Router.$avueRouter.formatRoutes(Store.state.user.menu, true);
+AvueRouter.install(Router, Store);  //模仿vue.use会调用相应插件的install方法，这里直接调用插件的install方法，然后对相应组件
+Router.$avueRouter.formatRoutes(Store.state.user.menu, true);                 //另一处加载动态路由在@page/index/siderbar/siderbarItem
 Router.addRoutes([...PageRouter, ...ViewsRouter]);
 export default Router;

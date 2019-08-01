@@ -17,7 +17,7 @@ import {
 import * as filters from './filters' // 全局filter
 import './styles/common.scss';
 // 引入avue的包
-import '@smallwei/avue/lib/index.js';
+import Avue from '@smallwei/avue';
 // 引入avue的样式文件
 import '@smallwei/avue/lib/theme-chalk/index.css';
 
@@ -31,14 +31,15 @@ import VueClipboard from 'vue-clipboard2'
 import vueJsonTreeView from 'vue-json-tree-view'
 
 
-Vue.use(router)
-
+Vue.use(router)                                     //转变以前错误的思维(调用use之后，一些模块使用时不再引入！)，vue.use()，仅仅就是调用相应插件的install方法，
+                                                    // install中会给vue全局注册一些组件，选项，以及原型属性，在vue实例之外使用这些模块还需要另外引入！
 Vue.use(VueClipboard)
 
 Vue.use(vueJsonTreeView)
 
-Vue.use(VueAxios, axios)
+Vue.use(Avue);
 
+Vue.use(VueAxios, axios)
 //注册全局容器
 Vue.component('basicContainer', basicContainer)
     // 加载相关url地址
@@ -60,5 +61,5 @@ Vue.config.productionTip = false;
 new Vue({
     router,
     store,
-    render: h => h(App)
+    render: h => h(App)                                     //为什么这个地方用的时候没有进行组件注册
 }).$mount('#app')

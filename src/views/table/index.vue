@@ -115,7 +115,7 @@
     <el-dialog title="菜单"
                :visible.sync="grade.box"
                width="40%">
-      <el-tree :data="menuAll"
+      <el-tree :data="menu"
                :default-checked-keys="grade.check"
                :default-expanded-keys="grade.check"
                show-checkbox
@@ -172,7 +172,7 @@ export default {
   watch: {},
   mounted () { },
   computed: {
-    ...mapGetters(['permission', 'menuAll']),
+    ...mapGetters(['permission', 'menu']),
   },
   props: [],
   methods: {
@@ -246,7 +246,7 @@ export default {
      * @title 打开权限
      */
     handleGrade (row) {
-      this.$store.dispatch('GetMenuAll').then(() => {
+      this.$store.dispatch('GetMenu').then(() => {
         this.grade.box = true;
         this.tabelObj = row;
         this.grade.check = this.tabelObj.check;
