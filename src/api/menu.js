@@ -3,6 +3,10 @@ export const getMenu = (type = 0) => request({
     url: '/menu/getMenu',
     method: 'get'
 });
+export const getMenuById = (id) => request({
+    url: '/menu/'+id,
+    method: 'get'
+});
 export const getMenuAll = () => request({
     url: '/menu/getMenuAll',
     method: 'get'
