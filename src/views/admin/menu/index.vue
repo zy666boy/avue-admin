@@ -144,7 +144,7 @@
                 typeOptions: ['0', '1'],
                 treeData:[]
             };
-        },
+        },//
         created() {
            this.getList();
         },
