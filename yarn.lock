@@ -707,10 +707,10 @@
   resolved "https://registry.npmjs.org/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@smallwei/avue@^1.6.1":
-  version "1.6.1"
-  resolved "https://registry.npmjs.org/@smallwei/avue/-/avue-1.6.1.tgz#f33d588b595245eb2968804ad1eff022acc43725"
-  integrity sha512-FVVsoWwtLJdbBfYACunXC8vWZNeqDEtuZMbeaK7VLNQkbr25q1W+WAKExDXNBqQ4oPsvmTL51Mz1PMFCCqbcJw==
+"@smallwei/avue@^1.4.7":
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/@smallwei/avue/-/avue-1.6.2.tgz#51a42eb12cb06cfef0200a2be13a93ba1482fe4f"
+  integrity sha512-WZeHETJgjjo5/u7KJxh6DZdXyUq0gabiYhtRTuyS4wp2RhgUx8GmV2Nfv9SmPqN69CIQLG2UMqhLsjEnP4WP7A==
   dependencies:
     async-validator "^1.10.0"
     avue-plugin-dynamicquery "^0.0.4"
@@ -721,7 +721,7 @@
     babel-helper-vue-jsx-merge-props "^2.0.0"
     dayjs "^1.7.5"
     deepmerge "^1.2.0"
-    element-ui "^2.4.9"
+    element-ui "2.4.9"
     normalize-wheel "^1.0.1"
     resize-observer-polyfill "^1.5.0"
     throttle-debounce "^1.0.1"
@@ -3289,7 +3289,19 @@ elegant-spinner@^1.0.1:
   resolved "https://registry.npmjs.org/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
   integrity sha1-2wQ1IcldfjA/2PNFvtwzSc+wcp4=
 
-element-ui@^2.4.5, element-ui@^2.4.6, element-ui@^2.4.9:
+element-ui@2.4.9:
+  version "2.4.9"
+  resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-2.4.9.tgz#b7c9c96da06f182c6a4fe7f508b8c8ef1a516732"
+  integrity sha512-PO5FsPiemYEJxPzzP3fT7Dhy/MX7zVqpJ74Rp6p8nBH604E7ruwT0VkrGX4K4cgAXRfgo4BK3O03m4RbWYUebA==
+  dependencies:
+    async-validator "~1.8.1"
+    babel-helper-vue-jsx-merge-props "^2.0.0"
+    deepmerge "^1.2.0"
+    normalize-wheel "^1.0.1"
+    resize-observer-polyfill "^1.5.0"
+    throttle-debounce "^1.0.1"
+
+element-ui@^2.4.5, element-ui@^2.4.6:
   version "2.7.2"
   resolved "https://registry.npmjs.org/element-ui/-/element-ui-2.7.2.tgz#8bc5bef5c3c53a2170422516b4324e70069c23d1"
   integrity sha512-Exh9QTkm9gwMMPzg1TyaTlBKyr3k4K9XcC5vl0A/mneDvJX//RsURGuOWsCNDVQMdhh5h9e+W5icosh+pKfbCg==
@@ -7234,10 +7246,10 @@ querystring@0.2.0:
   resolved "https://registry.npmjs.org/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
   integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
-querystringify@^2.0.0:
-  version "2.1.1"
-  resolved "https://registry.npmjs.org/querystringify/-/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
-  integrity sha512-w7fLxIRCRT7U8Qu53jQnJyPkYZIaR4n5151KMfcJlO/A9397Wxb1amJvROTK6TOnp7PfoAmg/qXiNHI+08jRfA==
+querystringify@^2.1.1:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.2.0.tgz#3345941b4153cb9d082d8eee4cda2016a9aef7f6"
+  integrity sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==
 
 quill-delta@^3.6.2:
   version "3.6.3"
@@ -7585,7 +7597,7 @@ require-uncached@^1.0.3:
 
 requires-port@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.npmjs.org/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
+  resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
 
 resize-observer-polyfill@^1.5.0:
@@ -8802,11 +8814,11 @@ url-loader@^1.1.2:
     schema-utils "^1.0.0"
 
 url-parse@^1.4.3:
-  version "1.4.5"
-  resolved "https://registry.npmjs.org/url-parse/-/url-parse-1.4.5.tgz#04cbb6ba2be682a18e4417fa2245aa7e3dfdcc50"
-  integrity sha512-4XDvC5vZRjEpjP0L4znrWeoH8P8F0XGBlfLdABi/6oV4o8xUVbTpyrxWHxkK2bT0pSIpcjdIzSoWUhlUfawCAQ==
+  version "1.5.10"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.10.tgz#9d3c2f736c1d75dd3bd2be507dcc111f1e2ea9c1"
+  integrity sha512-WypcfiRhfeUP9vvF0j6rw0J3hrWrw6iZv3+22h6iRMJ/8z1Tj6XfLP4DsUix5MhMPnXpiHDoKyoZ/bdCkwBCiQ==
   dependencies:
-    querystringify "^2.0.0"
+    querystringify "^2.1.1"
     requires-port "^1.0.0"
 
 url@0.11.0, url@^0.11.0:
